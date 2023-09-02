@@ -33,7 +33,7 @@ export default function Post({ data = {}, preview = false }) {
           <>
             <article>
               <Head>
-                <title>{`${post.title} | blog.prolifel.dev`}</title>
+                <title>{`${post.title} | blog.prolifel.com`}</title>
                 {post.coverImage?.asset?._ref && (
                   <meta
                     key="ogImage"

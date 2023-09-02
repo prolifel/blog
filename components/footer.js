@@ -8,7 +8,7 @@ export default function Footer() {
       <Container>
         <div className="py-5 flex flex-col lg:flex-row items-center">
           <h3 className="text-xl lg:text-2xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-3 lg:mb-0 lg:pr-4 lg:w-1/2">
-            blog.prolifel.dev
+            blog.prolifel.com
           </h3>
           <div className="lg:pl-4 lg:w-1/2 lg:text-end">
             powered by{" "}
