@@ -22,8 +22,7 @@ export const post = {
     {
       name: 'content',
       title: 'Content',
-      type: 'array',
-      of: [{ type: 'block' }],
+      type: 'markdown',
     },
     {
       name: 'excerpt',
