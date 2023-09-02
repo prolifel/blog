@@ -52,7 +52,7 @@ export default function Post({ data = {}, preview = false }) {
                 date={post.date}
                 author={post.author}
               />
-              <PostBody content={mdxSource} />
+              <PostBody content={post.content} />
             </article>
             <SectionSeparator />
             {morePosts.length > 0 && <MoreStories posts={morePosts} />}

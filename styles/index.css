@@ -8,6 +8,6 @@
 
 @layer base {
   html {
-    font-family: "Poltawski-Nowy";
+    font-family: "Poltawski-Nowy" !important;
   }
 }
