@@ -3,6 +3,7 @@ import { PreviewSuspense } from 'next-sanity/preview'
 import { postQuery, postSlugsQuery } from '../../lib/queries'
 import { getClient, overlayDrafts, sanityClient } from '../../lib/sanity.server'
 import Post from '../../components/post'
+import { serialize } from 'next-mdx-remote/serialize'
 
 const PostPreview = lazy(() => import('../../components/post-preview'))
 
@@ -23,13 +24,17 @@ export async function getStaticProps({ params, preview = false }) {
     slug: params.slug,
   })
 
+  // convert content from md to html
+  const mdxSource = await serialize(post.content)
+
   return {
     props: {
-      preview,
       data: {
         post,
         morePosts: overlayDrafts(morePosts),
+        mdxSource
       },
+      preview,
     },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,

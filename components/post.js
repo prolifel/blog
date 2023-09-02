@@ -10,16 +10,17 @@ import { CMS_NAME } from "../lib/constants";
 import PostHeader from "./post-header";
 import PostBody from "./post-body";
 import SectionSeparator from "./section-separator";
-import MoreStories from "./more-stories";
+import MoreStories from "./more-stories"
 
 export default function Post({ data = {}, preview = false }) {
   const router = useRouter();
 
-  const { post, morePosts } = data;
+
+  const { post, morePosts, mdxSource } = data;
   const slug = post?.slug;
 
   if (!router.isFallback && !slug) {
-    return <ErrorPage statusCode={404} />;
+    return <ErrorPage statusCode={404} />
   }
 
   return (
@@ -51,7 +52,7 @@ export default function Post({ data = {}, preview = false }) {
                 date={post.date}
                 author={post.author}
               />
-              <PostBody content={post.content} />
+              <PostBody content={mdxSource} />
             </article>
             <SectionSeparator />
             {morePosts.length > 0 && <MoreStories posts={morePosts} />}
