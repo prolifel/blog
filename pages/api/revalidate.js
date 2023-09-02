@@ -37,17 +37,13 @@ async function readBody(readable) {
 }
 
 export default async function revalidate(req, res) {
-  const signature = req.headers[SIGNATURE_HEADER_NAME]
+  const signature = req.headers["helohelo"]
   const body = await readBody(req) // Read the body into a string
-  if (
-    !isValidSignature(
-      body,
-      signature,
-      process.env.SANITY_REVALIDATE_SECRET?.trim()
-    )
-  ) {
+
+  if (process.env.SANITY_REVALIDATE_SECRET != signature) {
     const invalidSignature = 'Invalid signature'
     log(invalidSignature, true)
+    log(process.env.SANITY_REVALIDATE_SECRET?.trim() + ", " + signature, true)
     res.status(401).json({ success: false, message: invalidSignature })
     return
   }
